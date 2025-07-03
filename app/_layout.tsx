@@ -1,10 +1,5 @@
 // app/_layout.tsx
 
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -19,17 +14,12 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack
-        screenOptions={{ headerShown: false }}
-        initialRouteName="index"
-      >
+      <Stack screenOptions={{ headerShown: false }} initialRouteName="index">
         <Stack.Screen name="(tabs)" />
-                <Stack.Screen name="index" />
+        <Stack.Screen name="index" />
 
         <Stack.Screen name="+not-found" />
+        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
       </Stack>
-      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-    </ThemeProvider>
   );
 }

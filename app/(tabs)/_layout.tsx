@@ -15,7 +15,7 @@ export default function TabLayout() {
           paddingBottom: Platform.OS === "ios" ? 20 : 10,
         },
         tabBarActiveTintColor: "#1877F2", 
-        tabBarInactiveTintColor: "#ccc", 
+        tabBarInactiveTintColor: "#000", 
         tabBarIcon: ({ color, size, focused }) => {
           let iconName: string;
           let IconPack: any = Ionicons;
