@@ -1,14 +1,13 @@
-import React from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-export default class home {
-  render() {
-    return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
-    )
-  }
+const home = () => {
+  return (
+    <View>
+      <Text style={{backgroundColor:'#fff'}}>home</Text>
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({})
+export default home;
+
