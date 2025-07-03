@@ -25,10 +25,7 @@ export default function TabLayout() {
               IconPack = FontAwesome;
               iconName = "home";
               break;
-            case "Explore":
-              IconPack = Feather;
-              iconName = "compass";
-              break;
+
             case "Bookmark":
               IconPack = Feather;
               iconName = "bookmark";
@@ -52,7 +49,6 @@ export default function TabLayout() {
       })}
     >
       <Tabs.Screen name="Home" />
-      <Tabs.Screen name="Explore" />
       <Tabs.Screen name="Bookmark" />
       <Tabs.Screen name="Profile" />
     </Tabs>
