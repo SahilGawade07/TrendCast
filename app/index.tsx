@@ -26,7 +26,7 @@ export default function Login() {
         contentContainerStyle={styles.scrollContent}
       >
         <View style={styles.header}>
-          <Text style={styles.logo}>IMDb</Text>
+          <Text style={styles.logo}>TrendCast</Text>
         </View>
 
         <View style={styles.card}>
@@ -62,14 +62,14 @@ export default function Login() {
 
           <TouchableOpacity
             style={styles.loginBtn}
-            onPress={() => router.push("/(tabs)/home")}
+            onPress={() => router.push("/(tabs)/Home")}
           >
             <Text style={styles.loginText}>Login</Text>
           </TouchableOpacity>
 
           <View style={styles.dividerRow}>
             <View style={styles.line} />
-            <Text style={styles.dividerText}>New to IMDb?</Text>
+            <Text style={styles.dividerText}>New to TrendCast</Text>
             <View style={styles.line} />
           </View>
 

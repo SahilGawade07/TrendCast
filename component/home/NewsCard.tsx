@@ -1,80 +1,120 @@
+import formatTimeAgo from "@/utils/formatTimeAgo"; // ✅ adjust the path as needed
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-const NewsCard = () => {
-  return (
-    <View style={styles.container}>
-      <Image
-        source={{ uri: "https://example.com/zelensky-interview.jpg" }} // Replace with your own image URL
-        style={styles.image}
-      />
-      <View style={styles.textContainer}>
-        <Text style={styles.category}>Europe</Text>
-        <Text style={styles.headline} numberOfLines={1}>
-          Ukraine&apos;s President Zelensky to BBC: Blood money being paid...
-        </Text>
-        <View style={styles.footer}>
-          <Text style={styles.source}>BBC News</Text>
-          <Text style={styles.dot}>•</Text>
-          <Text style={styles.time}>14m ago</Text>
+interface NewsCardProps {
+  item: {
+    image?: string;
+    category?: string;
+    title: string;
+    source?: string;
+    published_at: string;
+  };
+}
+
+const NewsCard = ({ item }: NewsCardProps)  => (
+  <TouchableOpacity style={styles.newsCard}>
+    <Image
+      source={{ uri: item.image || "https://via.placeholder.com/80x80" }}
+      style={styles.newsImage}
+    />
+    <View style={styles.newsContent}>
+      <Text style={styles.newsCategory}>{item.category || "General"}</Text>
+      <Text style={styles.newsTitle} numberOfLines={2}>
+        {item.title}
+      </Text>
+      <View style={styles.newsMeta}>
+        <View style={styles.sourceContainer}>
+          <View style={styles.newsSourceLogo}>
+            <Text style={styles.newsSourceLogoText}>
+              {item.source?.charAt(0).toUpperCase() || "N"}
+            </Text>
+          </View>
+          <Text style={styles.newsSourceName}>
+            {item.source || "News Source"}
+          </Text>
         </View>
+        <Text style={styles.newsTimeAgo}>
+          {formatTimeAgo(item.published_at)}
+        </Text>
       </View>
     </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
+  </TouchableOpacity>
+);
+const styles =StyleSheet.create({
+  newsCard: {
     flexDirection: "row",
-    padding: 10,
-    alignItems: "flex-start",
-    borderRadius: 10,
+    marginBottom: 15,
     backgroundColor: "#fff",
+    borderRadius: 12,
+    overflow: "hidden",
     shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
     shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-    marginVertical: 8,
-    marginHorizontal: 10,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 6,
-    marginRight: 10,
+  newsImage: {
+    width: 80,
+    height: 80,
+    resizeMode: "cover",
+    backgroundColor: "#f0f0f0",
   },
-  textContainer: {
+  newsContent: {
     flex: 1,
+    padding: 12,
   },
-  category: {
-    color: "#6B7280",
-    fontSize: 12,
-    marginBottom: 2,
-  },
-  headline: {
-    fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 4,
-    color: "#111827",
-  },
-  footer: {
+  sourceContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
-  source: {
+  newsCategory: {
     fontSize: 12,
-    color: "#4B5563",
-    marginLeft: 4,
+    color: "#666",
+    marginBottom: 4,
   },
-  dot: {
-    fontSize: 12,
-    marginHorizontal: 6,
-    color: "#9CA3AF",
+  newsTitle: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#333",
+    marginBottom: 8,
+    lineHeight: 18,
   },
-  time: {
+  newsMeta: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  newsSourceLogo: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: "#FF0000",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 6,
+  },
+  newsSourceLogoText: {
+    fontSize: 8,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  newsSourceName: {
     fontSize: 12,
-    color: "#9CA3AF",
+    color: "#666",
+  },
+  newsTimeAgo: {
+    fontSize: 12,
+    color: "#999",
   },
 });
 
