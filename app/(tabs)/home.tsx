@@ -115,7 +115,6 @@ const Home: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
 
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.logo}>TrendCast</Text>
         <TouchableOpacity style={styles.menuButton}>
